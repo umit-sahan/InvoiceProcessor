@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://crd.gov.pl/wzor/2023/06/29/12648/"
+           xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/"
+           elementFormDefault="qualified">
+
+    <!-- Kök Eleman: Faktura -->
+    <xs:element name="Faktura">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Naglowek" type="NaglowekType" minOccurs="1"/>
+                <xs:element name="Podmiot1" type="PodmiotType" minOccurs="1"/>
+                <xs:element name="Podmiot2" type="PodmiotType" minOccurs="1"/>
+                <xs:element name="Fa" type="FaType" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Naglowek Tipi -->
+    <xs:complexType name="NaglowekType">
+        <xs:sequence>
+            <xs:element name="KodFormularza" type="KodFormularzaType" minOccurs="1"/>
+            <xs:element name="WariantFormularza" type="xs:string" minOccurs="1"/>
+            <xs:element name="DataWytworzeniaFa" type="xs:dateTime" minOccurs="1"/>
+            <xs:element name="SystemInfo" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- KodFormularza Tipi (attribute'lar ile) -->
+    <xs:complexType name="KodFormularzaType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="kodSystemowy" type="xs:string" use="required"/>
+                <xs:attribute name="wersjaSchemy" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Podmiot Tipi (Podmiot1 ve Podmiot2 için ortak) -->
+    <xs:complexType name="PodmiotType">
+        <xs:sequence>
+            <xs:element name="DaneIdentyfikacyjne" type="DaneIdentyfikacyjneType" minOccurs="1"/>
+            <xs:element name="Adres" type="AdresType" minOccurs="1"/>
+            <xs:element name="DaneKontaktowe" type="DaneKontaktoweType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- DaneIdentyfikacyjne Tipi -->
+    <xs:complexType name="DaneIdentyfikacyjneType">
+        <xs:sequence>
+            <xs:element name="NIP" type="xs:string" minOccurs="1"/> <!-- ZORUNLU ALAN -->
+            <xs:element name="Nazwa" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Adres Tipi -->
+    <xs:complexType name="AdresType">
+        <xs:sequence>
+            <xs:element name="KodKraju" type="xs:string" minOccurs="1"/>
+            <xs:element name="AdresL1" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- DaneKontaktowe Tipi -->
+    <xs:complexType name="DaneKontaktoweType">
+        <xs:sequence>
+            <xs:element name="Email" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Fa Tipi (Fatura ana bölümü) -->
+    <xs:complexType name="FaType">
+        <xs:sequence>
+            <xs:element name="KodWaluty" type="xs:string" minOccurs="1"/>
+            <xs:element name="P_1" type="xs:date" minOccurs="1"/> <!-- ZORUNLU ALAN -->
+            <xs:element name="P_2" type="xs:string" minOccurs="1"/> <!-- ZORUNLU ALAN -->
+            <!-- Diğer P_* alanları -->
+            <xs:element name="P_13_1" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_14_1" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_13_2" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_14_2" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_13_3" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_14_3" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_13_4" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_14_4" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_13_5" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_13_7" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_15" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="Adnotacje" type="AdnotacjeType" minOccurs="0"/>
+            <xs:element name="RodzajFaktury" type="xs:string" minOccurs="0"/>
+            <xs:element name="FaWiersz" type="FaWierszType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Adnotacje Tipi -->
+    <xs:complexType name="AdnotacjeType">
+        <xs:sequence>
+            <xs:element name="P_16" type="xs:string" minOccurs="0"/>
+            <xs:element name="P_17" type="xs:string" minOccurs="0"/>
+            <xs:element name="P_18" type="xs:string" minOccurs="0"/>
+            <xs:element name="P_18A" type="xs:string" minOccurs="0"/>
+            <xs:element name="Zwolnienie" type="ZwolnienieType" minOccurs="0"/>
+            <xs:element name="NoweSrodkiTransportu" type="NoweSrodkiTransportuType" minOccurs="0"/>
+            <xs:element name="P_23" type="xs:string" minOccurs="0"/>
+            <xs:element name="PMarzy" type="PMarzyType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Diğer kompleks tipler (Zwolnienie, NoweSrodkiTransportu, PMarzy) -->
+    <xs:complexType name="ZwolnienieType">
+        <xs:sequence>
+            <xs:element name="P_19N" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="NoweSrodkiTransportuType">
+        <xs:sequence>
+            <xs:element name="P_22N" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PMarzyType">
+        <xs:sequence>
+            <xs:element name="P_PMarzyN" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- FaWiersz Tipi -->
+    <xs:complexType name="FaWierszType">
+        <xs:sequence>
+            <xs:element name="NrWierszaFa" type="xs:integer" minOccurs="1"/>
+            <xs:element name="P_7" type="xs:string" minOccurs="0"/>
+            <xs:element name="P_8A" type="xs:string" minOccurs="0"/>
+            <xs:element name="P_8B" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_9A" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_11" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="P_12" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
