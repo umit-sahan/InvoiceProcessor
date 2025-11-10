@@ -7,14 +7,14 @@ public class InvoiceRequest {
     @NotBlank(message = "Base64 XML is required")
     private String base64xml;
 
-    // Constructors
+
     public InvoiceRequest() {}
 
     public InvoiceRequest(String base64xml) {
         this.base64xml = base64xml;
     }
 
-    // Getters and Setters
+
     public String getBase64xml() {
         return base64xml;
     }

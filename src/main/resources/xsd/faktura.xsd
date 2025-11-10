@@ -4,7 +4,7 @@
            xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/"
            elementFormDefault="qualified">
 
-    <!-- Kök Eleman: Faktura -->
+
     <xs:element name="Faktura">
         <xs:complexType>
             <xs:sequence>
@@ -16,7 +16,7 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- Naglowek Tipi -->
+
     <xs:complexType name="NaglowekType">
         <xs:sequence>
             <xs:element name="KodFormularza" type="KodFormularzaType" minOccurs="1"/>
@@ -26,7 +26,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- KodFormularza Tipi (attribute'lar ile) -->
+
     <xs:complexType name="KodFormularzaType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -36,7 +36,7 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <!-- Podmiot Tipi (Podmiot1 ve Podmiot2 için ortak) -->
+
     <xs:complexType name="PodmiotType">
         <xs:sequence>
             <xs:element name="DaneIdentyfikacyjne" type="DaneIdentyfikacyjneType" minOccurs="1"/>
@@ -45,7 +45,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- DaneIdentyfikacyjne Tipi -->
+
     <xs:complexType name="DaneIdentyfikacyjneType">
         <xs:sequence>
             <xs:element name="NIP" type="xs:string" minOccurs="1"/> <!-- ZORUNLU ALAN -->
@@ -53,7 +53,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Adres Tipi -->
+
     <xs:complexType name="AdresType">
         <xs:sequence>
             <xs:element name="KodKraju" type="xs:string" minOccurs="1"/>
@@ -61,14 +61,14 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- DaneKontaktowe Tipi -->
+
     <xs:complexType name="DaneKontaktoweType">
         <xs:sequence>
             <xs:element name="Email" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Fa Tipi (Fatura ana bölümü) -->
+
     <xs:complexType name="FaType">
         <xs:sequence>
             <xs:element name="KodWaluty" type="xs:string" minOccurs="1"/>
@@ -92,7 +92,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Adnotacje Tipi -->
+
     <xs:complexType name="AdnotacjeType">
         <xs:sequence>
             <xs:element name="P_16" type="xs:string" minOccurs="0"/>
@@ -106,7 +106,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Diğer kompleks tipler (Zwolnienie, NoweSrodkiTransportu, PMarzy) -->
+
     <xs:complexType name="ZwolnienieType">
         <xs:sequence>
             <xs:element name="P_19N" type="xs:string" minOccurs="0"/>
@@ -125,7 +125,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- FaWiersz Tipi -->
+
     <xs:complexType name="FaWierszType">
         <xs:sequence>
             <xs:element name="NrWierszaFa" type="xs:integer" minOccurs="1"/>

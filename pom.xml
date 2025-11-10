@@ -22,7 +22,7 @@
     </properties>
 
     <dependencies>
-        <!-- Önceki bağımlılıklar aynı kalacak -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -76,7 +76,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Maven Resources Plugin -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -86,7 +86,7 @@
                 </configuration>
             </plugin>
 
-            <!-- JAXB XJC Plugin -->
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>

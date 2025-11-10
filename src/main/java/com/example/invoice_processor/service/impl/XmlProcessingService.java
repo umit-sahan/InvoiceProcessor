@@ -27,16 +27,16 @@ import java.util.Base64;
 public class XmlProcessingService {
 
     public InvoiceEntity processXml(String base64Xml) {
-        // 1. Base64 decode
+
         String xmlContent = decodeBase64(base64Xml);
 
-        // 2. Validate XML against XSD
+
         validateXml(xmlContent);
 
-        // 3. Unmarshal XML to Java object
+
         Faktura faktura = unmarshalXml(xmlContent);
 
-        // 4. Extract data and create InvoiceEntity
+
         return extractInvoiceEntity(faktura);
     }
 
@@ -75,21 +75,21 @@ public class XmlProcessingService {
     private InvoiceEntity extractInvoiceEntity(Faktura faktura) {
         InvoiceEntity entity = new InvoiceEntity();
 
-        // Extract NIP from Podmiot1 -> DaneIdentyfikacyjne -> NIP
+
         if (faktura.getPodmiot1() != null &&
                 faktura.getPodmiot1().getDaneIdentyfikacyjne() != null) {
             String nip = faktura.getPodmiot1().getDaneIdentyfikacyjne().getNIP();
             entity.setNip(nip);
         }
 
-        // Extract P_1 (Invoice date) - Convert XMLGregorianCalendar to LocalDate
+
         if (faktura.getFa() != null && faktura.getFa().getP1() != null) {
             XMLGregorianCalendar p1Xml = faktura.getFa().getP1();
             LocalDate p1 = p1Xml.toGregorianCalendar().toZonedDateTime().toLocalDate();
             entity.setP1(p1);
         }
 
-        // Extract P_2 (Invoice number)
+
         if (faktura.getFa() != null && faktura.getFa().getP2() != null) {
             String p2 = faktura.getFa().getP2();
             entity.setP2(p2);
@@ -98,7 +98,7 @@ public class XmlProcessingService {
         return entity;
     }
 
-    // Alternatif dönüşüm metodu (XMLGregorianCalendar -> LocalDate)
+
     private LocalDate convertToLocalDate(XMLGregorianCalendar xmlGregorianCalendar) {
         if (xmlGregorianCalendar == null) {
             return null;

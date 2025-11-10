@@ -23,7 +23,7 @@ public class InvoiceEntity {
     @Column(name = "created_at")
     private LocalDate createdAt;
 
-    // Constructors
+
     public InvoiceEntity() {
         this.createdAt = LocalDate.now();
     }
@@ -35,7 +35,7 @@ public class InvoiceEntity {
         this.p2 = p2;
     }
 
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }

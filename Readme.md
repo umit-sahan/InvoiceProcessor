@@ -1,6 +1,4 @@
-Tamam! README.md dosyasını, **projenin Melasoft’a Backend Developer test case’i için geliştirildiğini** belirtecek şekilde güncelledim:
 
-```markdown
 # Invoice Processor API
 
 Spring Boot tabanlı XML fatura işleme API'si. Bu proje, **Melasoft’a Backend Developer test case’i** kapsamında geliştirilmiştir. Base64 ile kodlanmış XML faturaları işleyerek veritabanına kaydeder.
@@ -25,8 +23,8 @@ Spring Boot tabanlı XML fatura işleme API'si. Bu proje, **Melasoft’a Backend
 - Maven
 
 ## Proje Yapısı
+   ```
 
-```
 
 invoice-processor/
 ├── src/
@@ -59,29 +57,30 @@ invoice-processor/
 ├── pom.xml
 └── README.md
 
-````
+ ```
 
 ## Kurulum
 
 1. Projeyi clone edin:
-   ```bash
-   git clone <repository-url>
-   cd invoice-processor
-````
+
+   ```
+	git clone https://github.com/umit-sahan/InvoiceProcessor
+	cd InvoiceProcessor
+
 
 2. Maven bağımlılıklarını yükleyin:
 
-   ```bash
-   mvn clean install
    ```
+   mvn clean install
+
 
 3. Uygulamayı başlatın:
 
-   ```bash
+   ```
    mvn spring-boot:run
    ```
 
-   Veya IDE'nizden `InvoiceProcessorApplication.java` dosyasını çalıştırın.
+
 
 ## API Kullanımı
 
@@ -139,9 +138,9 @@ Uygulama çalışırken H2 konsoluna erişmek için:
 1. Browser'da `http://localhost:8080/h2-console` adresine gidin
 2. Bağlantı bilgileri:
 
-   * **JDBC URL:** `jdbc:h2:mem:invoicedb`
-   * **User Name:** `sa`
-   * **Password:** (boş bırakın)
+    * **JDBC URL:** `jdbc:h2:mem:invoicedb`
+    * **User Name:** `sa`
+    * **Password:** (boş bırakın)
 
 ### Tablo Yapısı
 
